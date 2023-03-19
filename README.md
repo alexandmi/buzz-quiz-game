@@ -1,1 +1,1 @@
-# buzz-quiz-game
+# buzz-quiz-game-simplified
