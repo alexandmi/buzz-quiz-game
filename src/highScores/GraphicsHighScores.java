@@ -4,7 +4,7 @@
  * getScoreOneMap and getScoreTwoMap to input the results from the High Scores logic.
  */
 
-package general;
+package highScores;
 
 import javax.swing.*;
 import java.awt.*;

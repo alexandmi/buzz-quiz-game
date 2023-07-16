@@ -3,13 +3,13 @@
  * the correct answer.
  */
 
-package general;
+package rounds.questions;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
-class Question {
+public class Question {
 
     private String category;
     private String question;
@@ -18,7 +18,7 @@ class Question {
     private Image image;
     private String letterOfCorrectAnswer;
 
-    Question (String category, String question, ArrayList<String> answers,String correctAnswer) {
+    public Question (String category, String question, ArrayList<String> answers,String correctAnswer) {
         this.category=category;
         this.question=question;
         this.answers=answers;
@@ -28,21 +28,21 @@ class Question {
         findLetterOfCorrectAnswer();
     }
 
-    String getQuestion() { return question; }
+    public String getQuestion() { return question; }
 
-    ArrayList<String> getAnswers() { return answers; }
+    public ArrayList<String> getAnswers() { return answers; }
 
-    String getCategory() { return category; }
+    public String getCategory() { return category; }
 
-    String getCorrectAnswer() {
+    public String getCorrectAnswer() {
         return letterOfCorrectAnswer;
     }
 
-    Image getImage() { return image; }
+    public Image getImage() { return image; }
 
-    boolean hasImage() { return !(image==null); }
+    public boolean hasImage() { return !(image==null); }
 
-    void setImage(Image image) {
+    public void setImage(Image image) {
         this.image = image;
     }
 

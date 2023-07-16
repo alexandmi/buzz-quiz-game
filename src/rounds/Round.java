@@ -2,9 +2,12 @@
  * This abstract class represents the general logic of a round. It contains in an ArrayList its questions.
  */
 
-package general;
+package rounds;
 
 import javax.imageio.ImageIO;
+
+import rounds.questions.Question;
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,7 +36,7 @@ public abstract class Round {
         
         this.unavailableQuestions=unavailableQuestions;
         this.numberOfQuestions=numberOfQuestions;
-        choseQuestions();
+        chooseQuestions();
         fillQuestions();
     }
 
@@ -42,7 +45,7 @@ public abstract class Round {
      * This method chooses randomly the indexes of the questions contained in the 'questions.txt' file. It utilizes the
      * unavailableQuestions ArrayList to not pick the same questions that the previous rounds picked.
      */
-    private void choseQuestions() {
+    private void chooseQuestions() {
         chosenQuestions = new ArrayList<>();
         Random r = new Random();
         int currentRandomQuestion;
@@ -128,17 +131,17 @@ public abstract class Round {
      * @param indexOfQuestion the index of the current question in this round.
      * @return whether the answer is correct or not.
      */
-    protected String getCorrectAnswer(int indexOfQuestion) {
+    public String getCorrectAnswer(int indexOfQuestion) {
         return questions.get(indexOfQuestion).getCorrectAnswer();
     }
 
-    protected String getCategory(int indexOfQuestion)  { return questions.get(indexOfQuestion).getCategory();  }
+    public String getCategory(int indexOfQuestion)  { return questions.get(indexOfQuestion).getCategory();  }
     
-    protected String getQuestion(int indexOfQuestion)  { return questions.get(indexOfQuestion).getQuestion();  }
+    public String getQuestion(int indexOfQuestion)  { return questions.get(indexOfQuestion).getQuestion();  }
     
-    protected ArrayList<String> getAnswers(int indexOfQuestion) { return questions.get(indexOfQuestion).getAnswers(); }
+    public ArrayList<String> getAnswers(int indexOfQuestion) { return questions.get(indexOfQuestion).getAnswers(); }
     
-    protected Image getImage(int indexOfQuestion) { return questions.get(indexOfQuestion).getImage(); }
+    public Image getImage(int indexOfQuestion) { return questions.get(indexOfQuestion).getImage(); }
     
-    protected boolean hasImage(int indexOfQuestion) { return questions.get(indexOfQuestion).hasImage(); }
+    public boolean hasImage(int indexOfQuestion) { return questions.get(indexOfQuestion).hasImage(); }
 }

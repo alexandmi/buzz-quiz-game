@@ -4,7 +4,7 @@
  * scoreboard,and an UserInformation object.
  */
 
-package general;
+package highScores;
 
 import java.io.*;
 import java.util.HashMap;
@@ -18,18 +18,35 @@ public class HighScores {
 
     public HighScores() throws IOException,ClassNotFoundException {
         
-        scoresOnePlayer = new HashMap<>();
-        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("scoresOnePlayer"));
-        scoresOnePlayer = (Map<Integer, UserInformation>) inputStream.readObject();
+        scoresOnePlayer = new HashMap<Integer,UserInformation>();
+        scoresTwoPlayers = new HashMap<Integer,UserInformation>();
 
-        scoresTwoPlayers = new HashMap<>();
-        ObjectInputStream inputStream2 = new ObjectInputStream(new FileInputStream("scoresTwoPlayers"));
-        scoresTwoPlayers = (Map<Integer, UserInformation>) inputStream2.readObject();
+
+        try{
+            FileInputStream fi = new FileInputStream(new File("scoresOnePlayer.txt"));
+            ObjectInputStream inputStream = new ObjectInputStream(fi);
+            scoresOnePlayer = (Map<Integer, UserInformation>) inputStream.readObject();
+
+            fi.close();
+            inputStream.close();
+        }
+        catch(EOFException e){}
+
+        try{
+            FileInputStream fo = new FileInputStream(new File("scoresTwoPlayers.txt"));
+            ObjectInputStream inputStream2 = new ObjectInputStream(fo);
+            scoresTwoPlayers = (Map<Integer, UserInformation>) inputStream2.readObject();
+
+            fo.close();
+            inputStream2.close();
+        }
+        catch(EOFException e){}
+
     }
 
 
     private void createScoreOnePlayer(int index,UserInformation info) throws IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("scoresOnePlayer"));
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("scoresOnePlayer.txt"));
         scoresOnePlayer.put(index,info);
         outputStream.writeObject(scoresOnePlayer);
         outputStream.flush();
@@ -38,7 +55,7 @@ public class HighScores {
 
 
     private void createScoreTwoPlayers(int index,UserInformation info) throws IOException {
-        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("scoresTwoPlayers"));
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("scoresTwoPlayers.txt"));
         scoresTwoPlayers.put(index,info);
         outputStream.writeObject(scoresTwoPlayers);
         outputStream.flush();

@@ -3,7 +3,7 @@
  * the  round.It uses the wildCardPanel of the GraphicsRounds to create the Timer panel.
  */
 
-package general;
+package graphics;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,12 +31,12 @@ public class GraphicsTimer extends GraphicsRounds {
 
         titleLabel.setText("ROUND: TIMER");
 
-        JLabel phrase1 = new JLabel("You will have 5 seconds to answer a question.If you answer correctly within");
+        JLabel phrase1 = new JLabel("You will have 10 seconds to answer a question. If you answer correctly within");
         phrase1.setAlignmentX(Component.CENTER_ALIGNMENT);
         phrase1.setFont(new Font("SERIF", Font.PLAIN, 20));
         instructions.add(phrase1);
 
-        JLabel phrase2 = new JLabel("these 5 seconds,you gain points equal to the product of the milliseconds left");
+        JLabel phrase2 = new JLabel("these 10 seconds, you gain points equal to the milliseconds left");
         phrase2.setAlignmentX(Component.CENTER_ALIGNMENT);
         phrase2.setFont(new Font("SERIF", Font.PLAIN, 20));
         instructions.add(phrase2);

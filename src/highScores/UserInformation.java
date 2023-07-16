@@ -3,7 +3,7 @@
  * a two player game.It implements Serializable and it helps us with the HighScore files.
  */
 
-package general;
+package highScores;
 
 import java.io.Serializable;
 
