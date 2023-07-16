@@ -1,2 +1,2 @@
-# Buzz quiz game
-Quiz game, similar to ”Buzz!: Quiz TV” game
+# Multiple answer quiz game
+Multiple answer quiz game made with Java Swing graphics
