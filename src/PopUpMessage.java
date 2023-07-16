@@ -1,9 +1,6 @@
 /**
  * This class has the object of the popup window,which is used at the game.
  */
-
-package general;
-
 import javax.swing.JOptionPane;
 
 public class PopUpMessage {

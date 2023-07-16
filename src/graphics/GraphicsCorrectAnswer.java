@@ -3,7 +3,7 @@
  * for the round.
  */
 
-package general;
+package graphics;
 
 import javax.swing.*;
 import java.awt.*;

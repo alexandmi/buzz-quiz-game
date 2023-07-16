@@ -6,7 +6,7 @@
  * types of rounds.In general it has everything that's common in every graphics of round.
  */
 
-package general;
+package graphics;
 
 import javax.swing.*;
 import java.awt.*;
@@ -78,23 +78,10 @@ public class GraphicsRounds extends JPanel {
         titlePanel.setBackground(Color.red);
         instructionsPanel.add(titlePanel);
 
-        titleLabel = new JLabel();
-        titleLabel.setFont(new Font("SERIF", Font.PLAIN, 20));
-        Font font;
-        Map attributes;
-        font = titleLabel.getFont();
-        attributes = font.getAttributes();
-        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        titleLabel.setFont(font.deriveFont(attributes));
+        titleLabel = createLabel("", 20, false, true);
         titlePanel.add(titleLabel);
 
-        JLabel instructionsLabel = new JLabel("Instructions");
-        instructionsLabel.setFont(new Font("SERIF", Font.PLAIN, 20));
-        instructionsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        font = instructionsLabel.getFont();
-        attributes = font.getAttributes();
-        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        instructionsLabel.setFont(font.deriveFont(attributes));
+        JLabel instructionsLabel = createLabel("Instructions", 20, true, true);
         instructionsPanel.add(Box.createRigidArea(new Dimension(0, 70)));
         instructionsPanel.add(instructionsLabel);
 
@@ -111,31 +98,19 @@ public class GraphicsRounds extends JPanel {
         controlsPanel.setBackground(Color.orange);
         instructionsPanel.add(Box.createRigidArea(new Dimension(0, 60)));
         instructionsPanel.add(controlsPanel);
-
-        JLabel controlsLabel = new JLabel("Controls");
-        controlsLabel.setFont(new Font("SERIF", Font.PLAIN, 20));
-        controlsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        font = controlsLabel.getFont();
-        attributes = font.getAttributes();
-        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        controlsLabel.setFont(font.deriveFont(attributes));
+        
+        JLabel controlsLabel = createLabel("Controls", 20, true, true);
         controlsPanel.add(controlsLabel);
 
-        JLabel player1Controls1Label = new JLabel("A ==>Q    B==>W    C==>E    D==>R    ENTER==>S");
-        player1Controls1Label.setFont(new Font("SERIF", Font.PLAIN, 20));
-        player1Controls1Label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel player1Controls1Label = createLabel("A ==>Q    B==>W    C==>E    D==>R    ENTER==>S", 20, true, false);
         controlsPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         controlsPanel.add(player1Controls1Label);
 
-        inTheCaseOfSecondPlayer = new JLabel("In the case of a second player,his controls are:");
-        inTheCaseOfSecondPlayer.setFont(new Font("SERIF", Font.PLAIN, 20));
-        inTheCaseOfSecondPlayer.setAlignmentX(Component.CENTER_ALIGNMENT);
+        inTheCaseOfSecondPlayer = createLabel("In the case of a second player,his controls are:", 20, true, false);
         controlsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         controlsPanel.add(inTheCaseOfSecondPlayer);
 
-        JLabel player2ControlsLabel = new JLabel("A ==>U    B==>I    C==>O    D==>P    ENTER==>K");
-        player2ControlsLabel.setFont(new Font("SERIF", Font.PLAIN, 20));
-        player2ControlsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel player2ControlsLabel = createLabel("A ==>U    B==>I    C==>O    D==>P    ENTER==>K", 20, true,false);
         controlsPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         controlsPanel.add(player2ControlsLabel);
 
@@ -143,7 +118,7 @@ public class GraphicsRounds extends JPanel {
         startRoundButton.setBackground(Color.RED);
         startRoundButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         startRoundButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        startRoundButton.addActionListener(e ->  cardLayoutRound.show(general.GraphicsRounds.this,"ROUND"));
+        startRoundButton.addActionListener(e ->  cardLayoutRound.show(graphics.GraphicsRounds.this,"ROUND"));
 
         instructionsPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         instructionsPanel.add(startRoundButton);
@@ -165,45 +140,34 @@ public class GraphicsRounds extends JPanel {
         /***** PANEL FOR INDEX OF ROUND AND QUESTION *****/
 
         JPanel indexOfRoundAndQuestion;
-        JLabel numberOfRound;
 
         indexOfRoundAndQuestion = new JPanel(new FlowLayout());
         indexOfRoundAndQuestion.setBackground(Color.RED);
         roundPanel.add(indexOfRoundAndQuestion);
 
-        numberOfRound = new JLabel("ROUND "+(index+1)+"               ");
-        numberOfRound.setFont(new Font("SERIF", Font.PLAIN, 22));
-        indexOfRoundAndQuestion.add(numberOfRound);
+        JLabel indexOfRound = createLabel("ROUND "+(index+1)+"               ", 22, false, false);
+        numberOfQuestion = createLabel("", 22, false, false);
 
-        numberOfQuestion = new JLabel();
-        numberOfQuestion.setFont(new Font("SERIF", Font.PLAIN, 22));
+        indexOfRoundAndQuestion.add(indexOfRound);
         indexOfRoundAndQuestion.add(numberOfQuestion,RIGHT_ALIGNMENT);
 
         /***** PANEL FOR USER NAMES AND POINTS *****/
 
         JPanel userNamesAndPoints;
-        JLabel labelUsername1;
-        JLabel labelUsername2;
 
         userNamesAndPoints = new JPanel(new FlowLayout());
         userNamesAndPoints.setBackground(Color.orange);
         roundPanel.add(userNamesAndPoints);
         roundPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        labelUsername1 = new JLabel(username1+": ");
-        labelUsername1.setFont(new Font("SERIF", Font.PLAIN, 22));
+        JLabel labelUsername1 = createLabel(username1+": ", 22, false, false);
+        labelPoints1 = createLabel("", 22, false, false);
+        JLabel labelUsername2 = createLabel("               "+username2+": ", 22, false, false);        
+        labelPoints2 = createLabel("", 22, false, false);
+
         userNamesAndPoints.add(labelUsername1);
-
-        labelPoints1 = new JLabel();
-        labelPoints1.setFont(new Font("SERIF", Font.PLAIN, 22));
         userNamesAndPoints.add(labelPoints1);
-
-        labelUsername2 = new JLabel("               "+username2+": ");
-        labelUsername2.setFont(new Font("SERIF", Font.PLAIN, 22));
         userNamesAndPoints.add(labelUsername2);
-
-        labelPoints2 = new JLabel();
-        labelPoints2.setFont(new Font("SERIF", Font.PLAIN, 22));
         userNamesAndPoints.add(labelPoints2);
 
         if(numberOfPlayers==1){
@@ -226,10 +190,8 @@ public class GraphicsRounds extends JPanel {
         panelCategory = new JPanel(new FlowLayout());
         panelCategory.setBackground(Color.orange);
         roundPanel.add(panelCategory);
-        //roundPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-        labelCategory = new JLabel();
-        labelCategory.setFont(new Font("SERIF", Font.PLAIN, 20));
+        labelCategory = createLabel("", 20, false, false);
         panelCategory.add(labelCategory);
 
         /***** PANEL FOR IMAGE *****/
@@ -252,13 +214,8 @@ public class GraphicsRounds extends JPanel {
         panelQuestion.setBackground(Color.orange);
         roundPanel.add(panelQuestion);
         roundPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-
-        labelQuestion = new JLabel();
-        labelQuestion.setFont(new Font("SERIF", Font.PLAIN, 20));
-        font = labelQuestion.getFont();
-        attributes = font.getAttributes();
-        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        labelQuestion.setFont(font.deriveFont(attributes));
+        
+        labelQuestion = createLabel("", 20, false, true);
         panelQuestion.add(labelQuestion);
 
         /***** PANEL FOR ANSWERS *****/
@@ -268,20 +225,14 @@ public class GraphicsRounds extends JPanel {
         roundPanel.add(answers);
         roundPanel.add(Box.createRigidArea(new Dimension(0, 15)));
 
-        labelAnswerA = new JLabel();
-        labelAnswerA.setFont(new Font("SERIF", Font.PLAIN, 20));
+        labelAnswerA = createLabel("", 20, false, false);
+        labelAnswerB = createLabel("", 20, false, false);
+        labelAnswerC = createLabel("", 20, false, false);
+        labelAnswerD = createLabel("", 20, false, false);
+
         answers.add(labelAnswerA);
-
-        labelAnswerB = new JLabel();
-        labelAnswerB.setFont(new Font("SERIF", Font.PLAIN, 20));
         answers.add(labelAnswerB);
-
-        labelAnswerC = new JLabel();
-        labelAnswerC.setFont(new Font("SERIF", Font.PLAIN, 20));
         answers.add(labelAnswerC);
-
-        labelAnswerD = new JLabel();
-        labelAnswerD.setFont(new Font("SERIF", Font.PLAIN, 20));
         answers.add(labelAnswerD);
 
         /***** PANEL FOR ANNOUNCEMENT OF CORRECT ANSWER *****/
@@ -290,8 +241,7 @@ public class GraphicsRounds extends JPanel {
         resultAnswerPanel.setBackground(Color.orange);
         roundPanel.add(resultAnswerPanel);
 
-        labelCorrectAnswer = new JLabel();
-        labelCorrectAnswer.setFont(new Font("SERIF", Font.PLAIN, 20));
+        labelCorrectAnswer = createLabel("", 20, false, false);
         resultAnswerPanel.add(labelCorrectAnswer);
 
         /***** PANEL FOR ANNOUNCEMENT OF NEW POINTS *****/
@@ -300,47 +250,35 @@ public class GraphicsRounds extends JPanel {
         resultPointsPanel.setBackground(Color.orange);
         roundPanel.add(resultPointsPanel);
 
-        player1NewPoints = new JLabel();
-        player1NewPoints.setFont(new Font("SERIF", Font.PLAIN, 20));
+        player1NewPoints = createLabel("", 20, false, false);
         resultPointsPanel.add(player1NewPoints);
 
-        player2NewPoints = new JLabel();
-        player2NewPoints.setFont(new Font("SERIF", Font.PLAIN, 20));
+        player2NewPoints = createLabel("", 20, false, false);
+
         if(numberOfPlayers==2) resultPointsPanel.add(player2NewPoints);
 
         /***** PANEL FOR STATE OF PLAYERS ANSWER *****/
 
         JPanel currentStateOfAnswers;
-        JLabel playerName1;
-        JLabel playerName2;
 
         currentStateOfAnswers = new JPanel(new FlowLayout());
         currentStateOfAnswers.setBackground(Color.orange);
         roundPanel.add(currentStateOfAnswers);
 
-        playerName1 = new JLabel(username1+":");
-        playerName1.setFont(new Font("SERIF", Font.PLAIN, 20));
+        JLabel playerName1 = createLabel(username1+":", 20, false, false);
+        player1State = createLabel("Current Answer", 20, false, false);
+        player1Answer = createLabel("-", 20, false, false);
+        JLabel playerName2 = createLabel("        "+username2+":", 20, false, false);
+        player2State = createLabel("Current Answer", 20, false, false);
+        player2Answer = createLabel("-", 20, false, false);
+
         currentStateOfAnswers.add(playerName1);
-
-        player1State = new JLabel("Current Answer");
-        player1State.setFont(new Font("SERIF", Font.PLAIN, 20));
         currentStateOfAnswers.add(player1State);
-
-        player1Answer = new JLabel("-");
-        player1Answer.setFont(new Font("SERIF", Font.PLAIN, 20));
         currentStateOfAnswers.add(player1Answer);
-
-        playerName2 = new JLabel("        "+username2+":");
-        playerName2.setFont(new Font("SERIF", Font.PLAIN, 20));
         currentStateOfAnswers.add(playerName2);
-
-        player2State = new JLabel("Current Answer");
-        player2State.setFont(new Font("SERIF", Font.PLAIN, 20));
         currentStateOfAnswers.add(player2State);
-
-        player2Answer = new JLabel("-");
-        player2Answer.setFont(new Font("SERIF", Font.PLAIN, 20));
         currentStateOfAnswers.add(player2Answer);
+
 
         if(numberOfPlayers==1) {
             playerName2.setVisible(false);
@@ -464,9 +402,7 @@ public class GraphicsRounds extends JPanel {
 
     public JPanel getWildcardPanel() { return wildcardPanel; }
 
-    public JButton getNextButton() {
-        return nextButton;
-    }
+    public JButton getNextButton() { return nextButton; }
 
 
     /**
@@ -500,7 +436,7 @@ public class GraphicsRounds extends JPanel {
     /**
      * This method locks and unlocks certain parts of the graphics depending on the phase of the round.
      */
-    public  void resetResultsLockStatusAnswers() {
+    public void resetResultsLockStatusAnswers() {
         
         labelCorrectAnswer.setText("");
         player1NewPoints.setText("");
@@ -545,4 +481,31 @@ public class GraphicsRounds extends JPanel {
         labelAnswerC.setText("                          C."+answers.get(2));
         labelAnswerD.setText("                          D."+answers.get(3));
     }
+
+        
+	protected JLabel createLabel(String label, int fontSize, boolean centerAlignment, boolean underlined){
+	
+		JLabel tempLabel;
+	
+		if(label.equals(""))
+			tempLabel = new JLabel();
+		else
+			tempLabel = new JLabel(label);
+	
+		tempLabel.setFont(new Font("SERIF", Font.PLAIN, fontSize));
+		
+		if(centerAlignment)
+			tempLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		if(underlined) {
+			Font font;
+        	Map attributes;
+		
+			font = tempLabel.getFont();
+			attributes = font.getAttributes();
+			attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+			tempLabel.setFont(font.deriveFont(attributes));
+        }
+        return tempLabel;
+	}
 }

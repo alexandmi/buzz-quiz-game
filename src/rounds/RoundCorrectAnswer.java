@@ -2,7 +2,7 @@
  * This class represents the Correct Answer type of round.
  */
 
-package general;
+package rounds;
 import java.io.IOException;
 import java.util.ArrayList;
 

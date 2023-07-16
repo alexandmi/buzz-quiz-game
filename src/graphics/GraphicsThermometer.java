@@ -4,7 +4,7 @@
  * the correct answers of each player are counted until one of them reaches 5.
  */
 
-package general;
+package graphics;
 
 import javax.swing.*;
 import java.awt.*;

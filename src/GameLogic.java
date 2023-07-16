@@ -1,12 +1,12 @@
 /**
  * This class represents the logic of the game.It contains the rounds and the players.
  */
-
-package general;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+import players.Player;
+import rounds.*;
 
 public class GameLogic {
     

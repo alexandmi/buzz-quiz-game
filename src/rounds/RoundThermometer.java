@@ -3,7 +3,7 @@
  * player has answered.
  */
 
-package general;
+package rounds;
 
 import java.io.IOException;
 import java.util.ArrayList;

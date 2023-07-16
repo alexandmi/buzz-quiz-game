@@ -2,7 +2,7 @@
  * This class represents the additional logic required for the Betting round.It saves the betting points of both players.
  */
 
-package general;
+package rounds;
 
 import java.io.IOException;
 import java.util.ArrayList;

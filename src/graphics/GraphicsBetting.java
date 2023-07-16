@@ -5,7 +5,7 @@
  * to proceed with the question.
  */
 
-package general;
+package graphics;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,7 +38,7 @@ public class GraphicsBetting extends GraphicsRounds {
         phrase1.setFont(new Font("SERIF", Font.PLAIN, 20));
         instructions.add(phrase1);
 
-        JLabel phrase2 = new JLabel("have to place a bet of 250,500,750 or 1000 points.If you answer correctly,");
+        JLabel phrase2 = new JLabel("have to place a bet of 250, 500, 750 or 1000 points.If you answer correctly,");
         phrase2.setAlignmentX(Component.CENTER_ALIGNMENT);
         phrase2.setFont(new Font("SERIF", Font.PLAIN, 20));
         instructions.add(phrase2);

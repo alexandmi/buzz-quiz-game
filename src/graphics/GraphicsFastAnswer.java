@@ -4,7 +4,7 @@
  * that both players answer right it will show who answered first.
  */
 
-package general;
+package graphics;
 
 import javax.swing.*;
 import java.awt.*;

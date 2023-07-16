@@ -2,8 +2,6 @@
  * This class is the main class of the game.It merges the logic and the graphics of the game.
  */
 
-package general;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,6 +10,9 @@ import java.awt.font.TextAttribute;
 import java.io.IOException;
 import java.util.Map;
 
+import highScores.*;
+import graphics.*;
+import rounds.*;
 
 public class GameController {
     
@@ -56,7 +57,6 @@ public class GameController {
 
     public GameController() throws IOException, ClassNotFoundException {
         
-        JFrame generalFrame = new JFrame();
         cardLayout = new CardLayout();
         generalPanel = new JPanel(cardLayout);
 
@@ -72,14 +72,18 @@ public class GameController {
         graphScores.getScoreTwoMap(scores.getHighScoresTwoPlayers());
         graphScores.getGoBackButton().addActionListener(e -> cardLayout.show(generalPanel, "INTRO"));
         generalPanel.add(graphScores,"SCORES");
+    }
 
-        generalFrame.add(generalPanel);
+    public void start(){
+        JFrame generalFrame = new JFrame();
 
         generalFrame.setTitle("BUZZ GAME");
-        generalFrame.setSize(780, 720);
+        generalFrame.setSize(1050, 720);
         generalFrame.setVisible(true);
-        generalFrame.setLocation(300,5);
+        generalFrame.setLocation(150,5);
         generalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        generalFrame.add(generalPanel);
+
     }
 
     /**
@@ -261,7 +265,7 @@ public class GameController {
                 player1Points = 1000;
             else if(randomRound instanceof GraphicsTimer) {
                 if(isPlayer1Correct) {
-                    double tempPoints =  ((RoundTimer)game.getRound(currentRound)).getTimeLeft(0)*0.2;
+                    double tempPoints =  ((RoundTimer)game.getRound(currentRound)).getTimeLeft(0)*0.1;
                     player1Points = (int)tempPoints;
                 }
                 timer.stop();
@@ -388,8 +392,8 @@ public class GameController {
             randomRound.changeLockStatus(1,true);
             ((GraphicsTimer)randomRound).unlockTimer(false);
             ((GraphicsTimer)randomRound).getBeginButton().addActionListener(e ->  {
-                ((GraphicsTimer) randomRound).setTimerLabel("5.0");
-                countTime = 5000;
+                ((GraphicsTimer) randomRound).setTimerLabel("10.0");
+                countTime = 10000;
 
                 timer.start();
 
